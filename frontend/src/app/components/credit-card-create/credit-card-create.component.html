@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-employee">
+    <!-- form card register -->
+    <div class="card-body">
+      <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputName">Credit Card Number</label>
+          <input class="form-control" type="text" formControlName="creditCardNumber">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && (myForm.creditCardNumber.errors?.required || myForm.creditCardNumber.errors?.pattern)">
+            Credit card number is not valid.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail3">Card Holder</label>
+          <input class="form-control" type="text" formControlName="cardHolder">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && (myForm.cardHolder.errors?.required || myForm.cardHolder.errors?.pattern)">
+            Card Holder is not valid.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail3">Card Expiration Date</label>
+          <input class="form-control" type="text" formControlName="expirationDate">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && (myForm.expirationDate.errors?.required || myForm.expirationDate.errors?.DateValidation)">
+            Card expiration date is not valid.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputVerify3">Security Code</label>
+          <input class="form-control" type="text" formControlName="securityCode">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && (myForm.securityCode.errors?.LengthValidation)">
+            Security code is not valid.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputVerify3">Amount</label>
+          <input class="form-control" type="text" formControlName="amount">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && (myForm.amount.errors?.required || myForm.amount.errors?.pattern || myForm.amount.value <= 0)">
+            Amount is not valid.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Submit Card Details</button>
+        </div>
+      </form>
+
+    </div>
+  </div><!-- form card register -->
+</div>
